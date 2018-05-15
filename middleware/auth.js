@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 
 function auth(req, res, next) {
     const token = req.header('Authorization');
-    if (!token) {return res.status(401).send('Aces denied. Token not provided');}
+    if (!token) {return res.status(401).send('Acces denied. Token not provided');}
      else try {
         const payload = jwt.verify(token, 'AardappeLKrokeT');
         console.log('Payload gotten from token:\n', payload);
@@ -13,7 +13,7 @@ function auth(req, res, next) {
         console.log('User created from payload:\n', req.user);
         next();
     } catch (ex) {
-        res.status(400).send('Aces denied. Invalid token');
+        res.status(400).send('Acces denied. Invalid token');
     }
 }
 
