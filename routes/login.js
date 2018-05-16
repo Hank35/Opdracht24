@@ -3,6 +3,7 @@ const express           = require('express');
 const jwt               = require('jsonwebtoken');
 const database          = require('../database');
 const { validate }      = require('../models/login');
+const mysql             = require('mysql');
 
 // Get router
 const router = express.Router();
@@ -20,22 +21,22 @@ router.post('/', (req, res) => {
     const { error } = validate(userClient);
     if (error) return res.status(400).send(error.details[0].message);
 
-    // Query database for user
+    
     database.query(`SELECT * FROM user WHERE email = '${userClient.email}'`, (error, result, fields) => {
-        // If user exists
+        
         if (result.length > 0) {
             // Get user from server
             let userServer = {
                 id: result[0].ID,
-                email: result[0].Email,
-                password: result[0].Password
+                email: result[0].email,
+                password: result[0].password
             };
             // Log some information
             console.log('User from client:\n', userClient);
             console.log('Linked user from server:\n', userServer);
             // If password is correct
-            if (userServer.password === userClient.password) {
-                // Create token
+            if (userServer.password.equals(userClient.password)) {
+
                 const token = jwt.sign({ userServer }, 'AardappeLKrokeT');
                 // Send response to client
                 const loginResult = {

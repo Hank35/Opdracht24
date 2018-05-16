@@ -14,7 +14,7 @@ function auth(req, res, next) {
         console.log('User created from payload:\n', req.user);
         next();
     } catch (ex) {
-        res.status(400).send('Acces denied. Invalid token');
+        res.status(401).send('Acces denied. Invalid token');
     }
 }
 

@@ -34,12 +34,10 @@ describe('Registration', () => {
     it('should return an error on GET request', (done) => {
         chai.request(server)
         .get('/api/register')
-        .end((err,res)=>
-        {
-            res.should.have.status(404)  
-                    
+        .end((err,res)=>{
+            response.should.have.status(412)  
+            done()         
         })
-        done()
     })
 
     it('should throw an error when the user already exists', (done) => {
@@ -55,6 +53,7 @@ describe('Registration', () => {
             res.should.have.status(412)
             done()
         })
+        
     })
 
     it('should throw an error when no firstname is provided', (done) => {
@@ -73,10 +72,19 @@ describe('Registration', () => {
     })
 
     it('should throw an error when firstname is shorter than 2 chars', (done) => {
-        //
-        // Hier schrijf je jouw testcase.
-        //
-        done()
+        chai.request(server)
+        .post('/api/register')
+        .send({
+            "firstname": "p",
+            "lastname" : "henk",
+            "email": "'piethenk@server.nl'",
+            "password":"secret"
+        })
+        .end((err,res)=>{
+            res.should.have.status(412)
+            done()
+        })
+        
     })
 
     it('should throw an error when no lastname is provided', (done) => {
@@ -95,10 +103,19 @@ describe('Registration', () => {
     })
 
     it('should throw an error when lastname is shorter than 2 chars', (done) => {
-        //
-        // Hier schrijf je jouw testcase.
-        //
-        done()
+        chai.request(server)
+        .post('/api/register')
+        .send({
+            "firstname": "piet",
+            "lastname" : "h",
+            "email": "'piethenk@server.nl'",
+            "password":"secret"
+        })
+        .end((err,res)=>{
+            res.should.have.status(412)
+            done()
+        })
+        
     })
 
     it('should throw an error when email is invalid', (done) => {

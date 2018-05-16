@@ -22,7 +22,7 @@ router.post('/', (req, res) => {
 
     // Checking if user exists
     database.query(`SELECT * FROM user WHERE email = '${login.email}'`, (error, result, fields) => {
-        if (rows.length > 0) return res.status(412).send('User already exists');
+        if (rows.size > 0) return res.status(412).send('User already exists');
         // Inserting user
         database.query('INSERT INTO user SET ?', login, (error, result, fields) => {
             database.query(`SELECT * FROM user WHERE id = ${result.insertId}`, (error, result, field) => {
@@ -32,6 +32,7 @@ router.post('/', (req, res) => {
     });
 
 });
+
 
 // Export register routes
 module.exports = router;
