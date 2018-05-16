@@ -1,8 +1,8 @@
 // Require modules
-const express = require('express');
-const jwt = require('jsonwebtoken');
-const database = require('../database');
-const { validate } = require('../models/login');
+const express           = require('express');
+const jwt               = require('jsonwebtoken');
+const database          = require('../database');
+const { validate }      = require('../models/login');
 
 // Get router
 const router = express.Router();

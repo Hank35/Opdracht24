@@ -1,16 +1,17 @@
 const Joi = require('Joi');
 
-function validateMeal(maaltijd) {
+function validateMeal(meal) {
     const schema = {
-        Naam: Joi.string().required(),
-        Beschrijving: Joi.string().required(),
-        Ingredienten: Joi.string().required(),
-        Allergie: Joi.string().required(),
-        Prijs: Joi.number().required(),
-        UserID: Joi.string().required(),
-        StudentenhuisID: Joi.string().required()
+        maalid: Joi.strict().required(),
+        naam: Joi.string().required(),
+        beschrijving: Joi.string().required(),
+        ingredienten: Joi.string().required(),
+        allergie: Joi.string().required(),
+        prijs: Joi.number().required(),
+        userID: Joi.string().required(),
+        studentenhuisID: Joi.string().required()
     };
-    return Joi.validate(maaltijd, schema);
+    return Joi.validate(meal, schema);
 }
 
  exports.validate = validateMeal;
