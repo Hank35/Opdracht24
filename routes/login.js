@@ -23,8 +23,8 @@ router.post('/', (req, res) => {
 
     
     database.query(`SELECT * FROM user WHERE email = '${userClient.email}'`, (error, result, fields) => {
-        
-        if (result.length > 0) {
+        if(error) return console.log(error);
+        if (result.length > 1) {
             // Get user from server
             let userServer = {
                 id: result[0].ID,
@@ -35,10 +35,8 @@ router.post('/', (req, res) => {
             console.log('User from client:\n', userClient);
             console.log('Linked user from server:\n', userServer);
             // If password is correct
-            if (userServer.password.equals(userClient.password)) {
-
+            if (userServer.password == userClient.password) {
                 const token = jwt.sign({ userServer }, 'AardappeLKrokeT');
-                // Send response to client
                 const loginResult = {
                     email: userServer.email,
                     token: token

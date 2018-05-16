@@ -15,7 +15,7 @@ describe('Studentenhuis API POST', () => {
 
         let token = '69sGijy7PLcokf4EhtAY';
 
-        chai.request('http://localhost:4200')
+        chai.request(server)
             .post('/api/studentenhuis')
             .set('Authorization', token)
             .end( (err, res) => {
@@ -33,7 +33,7 @@ describe('Studentenhuis API POST', () => {
             adres: 'Lovensdrijkstraat, Breda'
         };
 
-        chai.request('http://localhost:4200')
+        chai.request(server)
             .post('/api/studentenhuis')
             .set('Authorization', global.token)
             .send(studentenhuis)
@@ -56,7 +56,7 @@ describe('Studentenhuis API POST', () => {
             adres: 'Lovensdijkstraat, Breda'
         };
 
-        chai.request('http://localhost:4200')
+        chai.request(server)
             .post('/api/studentenhuis')
             .set('Authorization', global.token)
             .send(studentenhuis)
@@ -74,7 +74,7 @@ describe('Studentenhuis API POST', () => {
             naam: 'Lovensdijk'
         };
 
-        chai.request('http://localhost:4200')
+        chai.request(server)
             .post('/api/studentenhuis')
             .set('Authorization', global.token)
             .send(studentenhuis)
@@ -92,7 +92,7 @@ describe('Studentenhuis API GET all', () => {
 
         let token = '69sGijy7PLcokf4EhtAY';
 
-        chai.request('http://localhost:4200')
+        chai.request(server)
             .get('/api/studentenhuis')
             .set('Authorization', token)
             .end( (err, res) => {
@@ -105,7 +105,7 @@ describe('Studentenhuis API GET all', () => {
 
     it('should return all studentenhuizen when using a valid token', (done) => {
 
-        chai.request('http://localhost:4200')
+        chai.request(server)
             .get('/api/studentenhuis')
             .set('Authorization', global.token)
             .end( (err, res) => {
@@ -122,7 +122,7 @@ describe('Studentenhuis API GET one', () => {
 
         let token = '69sGijy7PLcokf4EhtAY';
 
-        chai.request('http://localhost:4200')
+        chai.request(server)
             .get('/api/studentenhuis/1')
             .set('Authorization', token)
             .end( (err, res) => {
@@ -136,7 +136,7 @@ describe('Studentenhuis API GET one', () => {
     it('should return the correct studentenhuis when using an existing huisId', (done) => {
 
         
-        chai.request('http://localhost:4200')
+        chai.request(server)
             .get('/api/studentenhuis/1')
             .set('Authorization', global.token)
             .end( (err, res) => {
@@ -150,7 +150,7 @@ describe('Studentenhuis API GET one', () => {
 
     it('should return an error when using an non-existing huisId', (done) => {
 
-        chai.request('http://localhost:4200')
+        chai.request(server)
             .get('/api/studentenhuis/420')
             .set('Authorization', global.token)
             .end( (err, res) => {
@@ -166,7 +166,7 @@ describe('Studentenhuis API PUT', () => {
 
         let token = '69sGijy7PLcokf4EhtAY';
 
-        chai.request('http://localhost:4200')
+        chai.request(server)
             .put('/api/studentenhuis/1')
             .set('Authorization', token)
             .end( (err, res) => {
@@ -184,7 +184,7 @@ describe('Studentenhuis API PUT', () => {
             adres: 'Lovensdijkstraat, Breda'
         };
 
-        chai.request('http://localhost:4200')
+        chai.request(server)
             .put('/api/studentenhuis/75')
             .send(studentenhuis)
             .set('Authorization', global.token)
@@ -204,7 +204,7 @@ describe('Studentenhuis API PUT', () => {
             adres: 'Lovensdrijkstraat, Breda'
         };
 
-        chai.request('http://localhost:4200')
+        chai.request(server)
             .put('/api/studentenhuis/7')
             .send(studentenhuis)
             .set('Authorization', global.token)
@@ -222,7 +222,7 @@ describe('Studentenhuis API PUT', () => {
             naam: 'Lovensdijk'
         };
 
-        chai.request('http://localhost:4200')
+        chai.request(server)
             .put('/api/studentenhuis/7')
             .send(studentenhuis)
             .set('Authorization', global.token)
@@ -240,7 +240,7 @@ describe('Studentenhuis API DELETE', () => {
 
         let token = '69sGijy7PLcokf4EhtAY';
 
-        chai.request('http://localhost:4200')
+        chai.request(server)
             .delete('/api/studentenhuis/8')
             .set('Authorization', token)
             .end( (err, res) => {
@@ -254,7 +254,7 @@ describe('Studentenhuis API DELETE', () => {
     
     it('should return a studentenhuis when posting a valid object', (done) => {
     
-        chai.request('http://localhost:4200')
+        chai.request(server)
             .delete('/api/studentenhuis/8')
             .set('Authorization', global.token)
             .end( (err, res) => {
@@ -272,7 +272,7 @@ describe('Studentenhuis API DELETE', () => {
             adres: "Heemraadssingel 85"
         }
         
-        chai.request('http://localhost:4200')
+        chai.request(server)
             .delete('/api/studentenhuis/8')
             .set('Authorization', global.token)
             .end((err, res) => {
@@ -292,7 +292,7 @@ describe('Studentenhuis API DELETE', () => {
             naam: "Lovendijk"
         }
         
-        chai.request('http://localhost:4200')
+        chai.request(server)
             .delete('/api/studentenhuis/8')
             .set('Authorization', global.token)
             .end((err, res) => {

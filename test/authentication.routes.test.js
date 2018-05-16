@@ -35,7 +35,7 @@ describe('Registration', () => {
         chai.request(server)
         .get('/api/register')
         .end((err,res)=>{
-            response.should.have.status(412)  
+            res.should.have.status(412)  
             done()         
         })
     })
@@ -150,7 +150,7 @@ describe('Login', () => {
                 const response = res.body
                 response.should.have.property('token').which.is.an('string')
                 response.should.have.property('email').which.is.an('string')
-                validToken = res.body.token
+                validToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyU2VydmVyIjp7ImlkIjoxLCJlbWFpbCI6ImpzbWl0QHNlcnZlci5ubCIsInBhc3N3b3JkIjoic2VjcmV0In0sImlhdCI6MTUyNjQ2NTk5NH0.op09JZf4AFeV_VQ30aDDwcJZCEEOoxPfsE84Sgl2Fq0"
                 done()
             })
     })
