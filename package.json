@@ -4,6 +4,10 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+<<<<<<< HEAD
+=======
+    "chai": "^4.1.2",
+>>>>>>> 03f0e40de9e6e82e025b085b4eecc7c0b8e4a758
     "chai-http": "^4.0.0",
     "express": "^4.16.3",
     "joi": "^13.3.0",
