@@ -5,7 +5,7 @@ const register      = require('./routes/register');
 const studentenhuis = require('./routes/studentenhuis');
 const meal          = require('./routes/maaltijd');
 const deelnemer     = require('./routes/deelnemer');
-
+// const index         = require('./test/studentenhuis.routes.test')
 // Middleware
 const app = express();
 app.use(express.json());
@@ -20,3 +20,5 @@ const port = process.env.PORT || 4200;
 app.listen(port, () => {
     console.log(`Listening on port ${port}..`);
 });
+
+// module.exports = index;
