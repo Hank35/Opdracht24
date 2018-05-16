@@ -20,3 +20,6 @@ const port = process.env.PORT || 4200;
 app.listen(port, () => {
     console.log(`Listening on port ${port}..`);
 });
+index = "localhost:4200";
+
+module.exports = index

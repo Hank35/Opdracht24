@@ -2,7 +2,8 @@ const jwt = require('jsonwebtoken');
 
 function auth(req, res, next) {
     const token = req.header('Authorization');
-    if (!token) {return res.status(401).send('Acces denied. Token not provided');}
+    if (!token) {return res.status(401).send('Acces denied. Token not provided');
+        console.log(token);}
      else try {
         const payload = jwt.verify(token, 'AardappeLKrokeT');
         console.log('Payload gotten from token:\n', payload);
